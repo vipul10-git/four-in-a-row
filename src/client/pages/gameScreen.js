@@ -8,6 +8,7 @@ import Avatar2 from '../../assets/images/avatar02.png';
 import Wrapper from '../component/wrapper';
 import SlotDesign from '../component/slotDesign';
 import ErrorMsgToast from '../component/errorToast';
+import {GameLogic} from '../utils/gameLogic';
 
 const AddPlayer = () =>{
     const params = useParams();
@@ -62,99 +63,7 @@ const AddPlayer = () =>{
         },1000)
         
     }
-
-    const checkWin = (col,row,player) => {
-        let flagHorizontal = 0;
-        let flagDiagonal = 0;
-        let flagVertical = 0;
-        let winFlg = false;
-        //horizontal
-        for(let i=col;i<8;i++){
-            let idToTest = `col-${i}--row-${row}`
-            let userAvailable = document.getElementById(idToTest).getAttribute("data-user" )  
-            if(userAvailable == player){
-                flagHorizontal++
-                if(flagHorizontal === 4){
-                    winFlg = true
-                }
-            }else{
-                flagHorizontal = 0 
-            }
-        }
-
-        //vertical
-        for(let i=0;i<8;i++){
-            let idToTest = `col-${col}--row-${i}`
-            let userAvailable = document.getElementById(idToTest).getAttribute("data-user" )  
-            if(userAvailable == player){
-                flagVertical++
-                if(flagVertical === 4){
-                    winFlg = true
-                }
-            }else{
-                flagVertical = 0 
-            }
-        }
-
-        //diagonal 
-        let initialColumnLeft = col;
-        let initialRowLeft = row;
-        let finalColumnLeft = col;
-        let finalRowLeft = row;
-        for(let i =0 ;i<8;i++){
-            if(initialColumnLeft <7 && initialRowLeft >0){
-                initialColumnLeft++
-                initialRowLeft--;
-            }
-        }
-        finalRowLeft = initialColumnLeft;
-        finalColumnLeft = initialRowLeft;
-        for(let i=0;i<8;i++){
-            if(initialColumnLeft >= finalColumnLeft && initialRowLeft <= finalRowLeft){
-                let idToTest = `col-${initialColumnLeft--}--row-${initialRowLeft++}`;
-                let userAvailable = document.getElementById(idToTest).getAttribute("data-user" )  
-                if(userAvailable == player){
-                    flagDiagonal++
-                    if(flagDiagonal === 4){
-                        winFlg = true
-                    }
-                }else{
-                    flagDiagonal = 0 
-                }
-            }
-        }
-
-        //diagonal 2
-        let initialColumnRight = col;
-        let initialRowRight= row;
-        for(let i =0 ;i<8;i++){
-            if(initialColumnRight >0 && initialColumnRight <=7 && initialRowRight >0 && initialRowRight <=7){
-                initialColumnRight--;
-                initialRowRight--;
-            }
-        }
-        for(let i=0;i<8;i++){
-            if(initialColumnRight <= 7 && initialRowRight <= 7){
-                let idToTest = `col-${initialColumnRight++}--row-${initialRowRight++}`;
-                let userAvailable = document.getElementById(idToTest).getAttribute("data-user" )  
-                if(userAvailable == player){
-                    flagDiagonal++
-                    if(flagDiagonal === 4){
-                        winFlg = true
-                    }
-                }else{
-                    flagDiagonal = 0 
-                }
-            }
-        }
-        if(winFlg){
-            nextGame(player)
-        } else{
-            if(player == 0) setPlayerTurn(1);
-            if(player == 1) setPlayerTurn(0);
-        }
-    }
-
+    
     const selecLastEmptySlot = (even) =>{
         let row = even.target.dataset.row;
         for(let i=7;i>=even.target.dataset.col;i--){
@@ -163,12 +72,20 @@ const AddPlayer = () =>{
                 if(playerTurn === 0){
                     document.getElementById(id).innerHTML = `<img src=${Avatar1} alt='player' height='30px'  className='playerImg'/>`;
                     document.getElementById(id).setAttribute("data-user",playerTurn )  
-                    checkWin(i,+row,playerTurn)
+                    if(GameLogic(i,+row,playerTurn)){
+                        nextGame(playerTurn)
+                    } else{
+                        setPlayerTurn(1);
+                    }
                     return;
                 }else if(playerTurn === 1){
                     document.getElementById(id).innerHTML = `<img src=${Avatar2} alt='player' height='30px' className='playerImg'/>`;
                     document.getElementById(id).setAttribute("data-user",playerTurn )  
-                    checkWin(i,+row,playerTurn)
+                    if(GameLogic(i,+row,playerTurn)){
+                        nextGame(playerTurn)
+                    } else{
+                        setPlayerTurn(0);
+                    }
                     return;
                 }  
             }
