@@ -123,6 +123,7 @@ const AddPlayer = () =>{
                 }
             }
         }
+        //diagonal 2
         let initialColumnRight = col;
         let initialRowRight= row;
         for(let i =0 ;i<8;i++){
@@ -131,7 +132,6 @@ const AddPlayer = () =>{
                 initialRowRight--;
             }
         }
-        console.log()
         for(let i=0;i<8;i++){
             if(initialColumnRight <= 7 && initialRowRight <= 7){
                 let idToTest = `col-${initialColumnRight++}--row-${initialRowRight++}`;
