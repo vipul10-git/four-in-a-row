@@ -41,7 +41,7 @@ const AddPlayer = () =>{
             let wins= player2Wins+1
             setPlayer2Wins(wins)
         }
-        if(playCount == gameCount){
+        if(playCount === gameCount){
             setWin(player1Wins > player2Wins ? player1 : player2)
         }else{
             setShowWin(true)
@@ -74,7 +74,7 @@ const AddPlayer = () =>{
             let userAvailable = document.getElementById(idToTest).getAttribute("data-user" )  
             if(userAvailable == player){
                 flagHorizontal++
-                if(flagHorizontal == 4){
+                if(flagHorizontal === 4){
                     winFlg = true
                 }
             }else{
@@ -88,7 +88,7 @@ const AddPlayer = () =>{
             let userAvailable = document.getElementById(idToTest).getAttribute("data-user" )  
             if(userAvailable == player){
                 flagVertical++
-                if(flagVertical == 4){
+                if(flagVertical === 4){
                     winFlg = true
                 }
             }else{
@@ -115,7 +115,7 @@ const AddPlayer = () =>{
                 let userAvailable = document.getElementById(idToTest).getAttribute("data-user" )  
                 if(userAvailable == player){
                     flagDiagonal++
-                    if(flagDiagonal == 4){
+                    if(flagDiagonal === 4){
                         winFlg = true
                     }
                 }else{
@@ -123,6 +123,7 @@ const AddPlayer = () =>{
                 }
             }
         }
+
         //diagonal 2
         let initialColumnRight = col;
         let initialRowRight= row;
@@ -138,7 +139,7 @@ const AddPlayer = () =>{
                 let userAvailable = document.getElementById(idToTest).getAttribute("data-user" )  
                 if(userAvailable == player){
                     flagDiagonal++
-                    if(flagDiagonal == 4){
+                    if(flagDiagonal === 4){
                         winFlg = true
                     }
                 }else{
@@ -177,26 +178,25 @@ const AddPlayer = () =>{
     return(
         <Wrapper>
             <div className='container'>
-                <div className='mainPageFrame alignCenter justifyContent' style={{flex:5,position:'relative',bottom:'0'}}>
-                    <div style={{display:'grid',gridTemplateColumns:`repeat(8,1fr)`}} onClick={win === null ? selecLastEmptySlot: ()=> false}> 
+                <div className='mainPageFrame alignCenter justifyContent' style={{position:'relative',bottom:'0'}}>
+                    <div style={{display:'grid',gridTemplateColumns:`repeat(8,1fr)`}} onClick={win === null ? selecLastEmptySlot: ()=> {}}> 
                 <SlotDesign/>
                 </div>
                 </div>  
-                <div style={{flex:'one'}} className='justifyContent sideSheet alignCenter displayFlex textCenter'>
+                <div className='justifyContent sideSheet alignCenter displayFlex textCenter'>
                     <h3>{playCount} Games Tournament</h3>
                     {showWin && <div className='Orange font18' > WIN!!!!</div>}
                     {win !== null ?
-                        win ===1 ?     
-                            <div ><span className='Orange font18'>Congratulation!</span><div>{player2},you won tournament</div></div>
-                            :
-                            <div ><span className='Orange font18'>Congratulation!</span><div>{player1}, you won tournament</div></div>
-
+                            <div >
+                                <span className='Orange font18'>Congratulation!</span>
+                                <div>{ win ===1 ? player2 : player1},you won tournament</div>
+                            </div>
                         :
                         <h5>Playing Game {gameCount}</h5>
                     }
-                    <Card img={Avatar1} backColor='byellow' borderColor='borderGreen' secondBorder={playerTurn === 0 ? true : false} disabled={true} text='Player 01' value={player1}/>
-                    <Card img={Avatar2} backColor='bgreen' borderColor='borderyellow' secondBorder={playerTurn === 1 ? true : false} disabled={true}  text='Player 02' value={player2}/>
-                    <div className='borderTop' style={{margin:'5px',width:'80%'}}/>
+                    <Card img={Avatar1} underLineBorder = {true}  backColor='byellow' borderColor='borderGreen' secondBorder={playerTurn === 0 ? true : false} disabled={true} text='Player 01' value={player1}/>
+                    <Card img={Avatar2} underLineBorder = {true} backColor='bgreen' borderColor='borderyellow' secondBorder={playerTurn === 1 ? true : false} disabled={true}  text='Player 02' value={player2}/>
+                    <div className='LineDesign'/>
                     <Button width='80%' height='50px' backColor = '#4a47a3' txtColor='white' text='Undo move' MouseEnter={() => setIsShown(true)} MouseLeave={() => setIsShown(false)}/>
                     <Button width='80%' height='50px' backColor = 'white' txtColor='red' text='End Tournament' clicked={endGame}/>
                     

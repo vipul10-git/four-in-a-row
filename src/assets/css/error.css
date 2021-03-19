@@ -1,0 +1,15 @@
+.errToast{
+    background-color: #606060;
+    position: fixed;
+    bottom: 35vh;
+    right: 0;
+    left: 0;
+    margin: auto;
+    color: #e0fbff;
+    z-index: 9999999999;
+    padding: 10px 5px;
+    transition: all .3s ease-out;
+    border-radius: 12px;
+    max-width: 150px;
+    text-align: center;
+}

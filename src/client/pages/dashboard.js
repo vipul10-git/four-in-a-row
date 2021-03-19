@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { useHistory } from "react-router-dom";
-import GAMEIMG from '../../assets/images/4inarow.png';
 import '../../assets/css/app.css';
+import GAMEIMG from '../../assets/images/4inarow.png';
 import Button from '../component/button';
 import One from '../../assets/images/one/one.png';
 import Two from '../../assets/images/two/two.png';
@@ -30,23 +30,23 @@ const Dashboard = () =>{
                 </div>
                 <div className='mainPageFrame'>
                     <div className='playButton justifyContent alignCenter displayFlex'>
-                        <img alt='play' src={Play} width='25px' style={{borderRadius:'50%'}}/>
+                        <img alt='play' src={Play} width='25px' className='bR50Per'/>
                         <div className='mT10 white'>PLAY</div>
                         </div>
-                    <div className='borderTop' style={{margin:'0px 35px'}}/>
+                    <div className='LineDesign'/>
                     <div className='btmMainPost'>
-                        <div className='displayFlex' style={{justifyContent:'center'}}>
+                        <div className='displayFlex justifyContent'>
                             <Button backColor = '#4BABFF' txtColor='white' text='Custome game' sidImg={One} MouseEnter={() => setIsShown(true)} MouseLeave={() => setIsShown(false)}/>
                             <Button backColor = '#4B7BFF' txtColor='white' text='Two Players' sidImg={Two} clicked ={btnClickHandle} />
                         </div>
-                        <div className='displayFlex' style={{justifyContent:'center'}}>
+                        <div className='displayFlex justifyContent'>
                             <Button backColor = '#4B4BFF' txtColor='white' text='Game Online' sidImg={Online} MouseEnter={() => setIsShown(true)} MouseLeave={() => setIsShown(false)}/>
                             <Button backColor = '#6E4BFF' txtColor='white' text='Training Game' sidImg={Training} MouseEnter={() => setIsShown(true)} MouseLeave={() => setIsShown(false)}/>
                         </div>
                     </div>
                 </div>
                 <div className='bottomSheet'>
-                <p className='text2020'>© 2020</p>
+                    <p className='text2020'>© 2020</p>
                 </div>
             </div>
             {popupshow && <ErrorMsgToast errMsg='Coming Soon'/>}

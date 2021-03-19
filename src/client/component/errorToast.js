@@ -1,16 +1,14 @@
 import React from 'react';
-import '../../assets/css/global.css';
+import '../../assets/css/error.css';
 
 const ErrorMsgToast = (props) =>{
  
-        const { errMsg } = props;
-        return (
-                <div style={{ maxWidth: 450 }}>
-                    <div className='errToast'>
-                        {errMsg}
-                    </div> 
-                </div>
-        );
+    const { errMsg } = props;
+    return (
+        <div className='errToast'>
+            {errMsg}
+        </div>
+    );
 }
 
 export default ErrorMsgToast;

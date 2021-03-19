@@ -9,6 +9,8 @@ import Avatar2 from '../../assets/images/avatar02.png';
 import Run from '../../assets/images/run.png';
 import Winner from '../../assets/images/winner.png';
 import Wrapper from '../component/wrapper';
+import Popup from '../component/popup';
+import RadioBox from '../component/radioBox';
 
 const AddPlayer = () =>{
     const [player1, setPlayer1] = useState('David')
@@ -50,38 +52,33 @@ const AddPlayer = () =>{
                     <Card img={Avatar2} backColor='bgreen' borderColor='borderyellow' text='Player 02' onChange={addName2} value={player2}/>
                     <Card img={Run} backColor='bblue' borderColor='borderBlue' text='Number of games' onClick={()=>setShowGAmePopup(true)} value={playCount}/>
                     <Card img={Winner} backColor='bblue' borderColor='borderBlue' text='Who Start ' onClick={()=>setShowPlayerPopup(true)} value={starterVal}/>
-
-                    <div className='borderTop' style={{margin:'5px',width:'80%'}}/>
+                    <div className='LineDesign'/>
                     <Button width='80%' height='50px' backColor = '#4a47a3' txtColor='white' text='Start Game' clicked={routeToGame}/>
                 </div>  
             </div>
             {showGamePopup && 
-                <div class="popUp">
-                    <div className='hoverDiv'>
-                        <h3> Number Of Game</h3>
-                        <div onChange={setNumberOfGame}>
-                            <div className='popupselection displayFlex'><input type="radio" value="3" name="gender"/> 3 Games</div>
-                            <div className='popupselection displayFlex'><input type="radio" value="5" name="gender"/> 5 Games</div>
-                            <div className='popupselection displayFlex'><input type="radio" value="10" name="gender"/> 10 Games</div>
-                        </div>
-                        <div className='borderTop' style={{margin:'10px 35px',width:'80%'}}/>
-                        <Button width='30%' height='50px' backColor = 'white' txtColor='#4a47a3' text='CANCEL' clicked={()=>setShowGAmePopup(false)}/>
-                        <Button width='45%' height='50px' backColor = '#4a47a3' txtColor='white' text='OK ' clicked={()=>setShowGAmePopup(false)}/>
+                <Popup>
+                    <h3> Number of game</h3>
+                    <div onChange={setNumberOfGame}>
+                        <RadioBox value='2 Games' id='2Game'/>
+                        <RadioBox value='3 Games' id='3Game'/>
+                        <RadioBox value='5 Games' id='5Game'/>
+                        <RadioBox value='10 Games' id='10Game'/>
                     </div>
-                </div>
+                    <div className='LineDesign'/>
+                    <Button width='30%' height='50px' backColor = 'white' txtColor='#4a47a3' text='CANCEL' clicked={()=>setShowGAmePopup(false)}/>
+                    <Button width='45%' height='50px' backColor = '#4a47a3' txtColor='white' text='OK ' clicked={()=>setShowGAmePopup(false)}/>
+                </Popup>
             }   
             {showPlayerPopup && 
-                <div class="popUp">
-                    <div className='hoverDiv'>
-                        <h3> Choose The Player</h3>
-                        <div onChange={setOfGame}>
-                            <div className='popupselection displayFlex'><input type="radio" value={`${player1}`} id='0' name="gender"/> {player1}</div>
-                            <div className='popupselection displayFlex'><input type="radio" value={`${player2}`} id='1' name="gender"/> {player2}</div>
-                            <div className='popupselection displayFlex'><input type="radio" value="Alternate" id='2' name="gender"/> Alternate</div>
-                        </div>
-                        <div className='borderTop' style={{margin:'10px 35px',width:'80%'}}/>
+                <Popup>
+                    <h3> Choose the player</h3>
+                    <div onChange={setOfGame}>
+                        <RadioBox value={player1} id='0'/>
+                        <RadioBox value={player2} id='1'/>
+                        <RadioBox value='Alternate' id='2'/>
                     </div>
-                </div>
+                </Popup>
             } 
         </Wrapper>
     )

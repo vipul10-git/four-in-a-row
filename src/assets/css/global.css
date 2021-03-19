@@ -10,29 +10,3 @@ input{
 input[type="text"]{
     width: 85%;
 }
-button{
-    outline: none;
-    box-shadow: 0px 2px 16px -4px 0px 2px 16px -4px rgb(115 115 115 / 53%)
-}
-.errToast{
-    background-color: #606060;
-    position: fixed;
-    bottom: 35vh;
-    right: 0;
-    left: 0;
-    margin: auto;
-    color: #e0fbff;
-    z-index: 9999999999;
-    padding: 10px 5px;
-    transition: all .3s ease-out;
-    border-radius: 12px;
-    max-width: 150px;
-    text-align: center;
-}
-.wrapper{
-    background-color:#CED2DC;
-    height:100vh;
-    width:100vw;
-    display:flex;
-    overflow:hidden;
-}
