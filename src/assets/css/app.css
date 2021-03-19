@@ -1,0 +1,198 @@
+.button{
+border-radius: 20px;
+border: none;
+padding: 10px 20px;
+opacity: 1;
+width: 170px;
+margin: 5px;
+outline: none;
+cursor: pointer;
+}
+.navyColor{
+    color:#3D4276
+}
+.secondaryFontColor{
+    color:#949494
+}
+.white{
+    color:#ffff
+}
+.Orange{
+    color:rgb(228, 167, 111)
+}
+.byellow{
+    background-color: rgb(225, 243, 160);
+}
+.bgreen{
+    background-color: rgb(172, 230, 172);
+}
+.bblue{
+    background-color: rgb(172, 204, 230);
+}
+.font12{
+    font-size: 12px;
+}
+.font18{
+    font-size: 18px;
+}
+.font20{
+    font-size: 20px;
+}
+.borderTop{
+    border-top: .2px solid #dcdcdc;
+}
+.floatL{
+    float: left;
+}
+.floatR{
+    float: right;
+}
+.displayFlex{
+    display: flex;
+}
+.mT10{
+    margin-top: 10px;
+}
+.mL8{
+    margin-left: 8px;
+}
+.mL4{
+    margin-left: 4px;
+}
+.mB8{
+    margin-bottom: 8px;
+}
+.mBR4{
+    margin-right: 4px;
+}
+.pL8{
+    padding-left: 8px;
+}
+.p6{
+    padding: 6px;
+}
+.mainPageFrame{
+    background-color: white;
+    border-radius: 30px;
+    height: 60vh;
+    width: 30vw;
+    position: absolute;
+    bottom: 60px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+.bottomSheet{
+    width: 30vw;
+    position: absolute;
+    background-color: #EEEEEE;
+    border-radius: 30px;
+    height: 15vh;
+    bottom: 20px;
+    z-index: 1;
+    padding: 20px;
+}
+.sideSheet{
+    width: 18vw;
+    background-color: #EEEEEE;
+    border-radius: 0px 30px 30px 0px;
+    height: 60vh;
+    z-index: 1;
+    position: relative;
+    padding: 20px 0px 20px 20px;
+    left: -26px;
+    flex-direction: column;
+}
+.playButton{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    background-color: rgb(255, 114, 67);
+    flex-direction: column;
+    margin: 55px;
+}
+.btmMainPost{
+    position: relative;
+    bottom: -60px;
+}
+.text2020{
+    position: absolute;
+    bottom: 0px;
+    left: 17px;
+    font-size: 10px;
+    color: #424242;
+}
+.playerCard{
+    border-radius: 10px;
+    width: 75%;
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    margin: 4px;
+}
+.playerImg{
+    width: 32px;
+    height: 32px;
+}
+.borderGreen{
+    border: 8px solid green;
+}
+.borderRed{
+    border: 8px solid rgb(243, 119, 119);
+}
+.borderyellow{
+    border: 8px solid yellow;
+
+}
+.borderBlue{
+    border: 8px solid rgb(166, 166, 253);
+}
+.borderOrange{
+    border: 4px solid rgb(247, 166, 134);
+}
+.boxShadow{
+    box-shadow: 0px 2px 7px -3px black, 0 0px 2px black inset;
+}
+.bR50Per{
+    border-radius: 50%;
+}
+.alignCenter{
+    align-items: center;
+}
+.justifyContent{
+    justify-content: center;
+}
+.textCenter{
+    text-align: center;
+}
+.textInitial{
+    text-align: initial;
+}
+.mainimg{
+    position: relative;
+    width: 300px;
+    height: 400px;
+    z-index: 999;
+    top: -65px;
+}
+.innerCircle{
+    background-color: white;
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    padding: 5px;
+    border-radius: 50%;
+    margin: auto;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    cursor: pointer;
+}
+.outerCircle{
+    background-color: #0095ff;
+    height: 40px;
+    width: 40px;
+    position: relative;
+}
