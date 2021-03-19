@@ -7,17 +7,20 @@ import Avatar1 from '../../assets/images/avatar01.png';
 import Avatar2 from '../../assets/images/avatar02.png';
 import Wrapper from '../component/wrapper';
 import SlotDesign from '../component/slotDesign';
+import ErrorMsgToast from '../component/errorToast';
 
 const AddPlayer = () =>{
     const params = useParams();
     const player1 = params.player1;
     const player2 = params.player2;
-    const [playerTurn, setPlayerTurn] = useState(1)
+    const start = params.start == 0 || params.start == 1 ? +params.start : 0;
+    const [playerTurn, setPlayerTurn] = useState(start)
     const playCount = params.rounds;
     const [gameCount,setGameCount] = useState(1);
     const [player1Wins,setPlayer1Wins] = useState(0);
     const [player2Wins,setPlayer2Wins] = useState(0);
     const [showWin,setShowWin] = useState(false);
+    const [popupshow, setIsShown] = useState(false)
 
     const [win , setWin] = useState(null);
     let history = useHistory();
@@ -94,21 +97,44 @@ const AddPlayer = () =>{
         }
 
         //diagonal 
-        let initialColumn = col;
-        let initialRow = row;
-        let finalColumn = col;
-        let finalRow = row;
+        let initialColumnLeft = col;
+        let initialRowLeft = row;
+        let finalColumnLeft = col;
+        let finalRowLeft = row;
         for(let i =0 ;i<8;i++){
-            if(initialColumn <7 && initialRow >0){
-                initialColumn++
-                initialRow--;
+            if(initialColumnLeft <7 && initialRowLeft >0){
+                initialColumnLeft++
+                initialRowLeft--;
             }
         }
-        finalRow = initialColumn;
-        finalColumn = initialRow;
+        finalRowLeft = initialColumnLeft;
+        finalColumnLeft = initialRowLeft;
         for(let i=0;i<8;i++){
-            if(initialColumn >= finalColumn && initialRow <= finalRow){
-                let idToTest = `col-${initialColumn--}--row-${initialRow++}`;
+            if(initialColumnLeft >= finalColumnLeft && initialRowLeft <= finalRowLeft){
+                let idToTest = `col-${initialColumnLeft--}--row-${initialRowLeft++}`;
+                let userAvailable = document.getElementById(idToTest).getAttribute("data-user" )  
+                if(userAvailable == player){
+                    flagDiagonal++
+                    if(flagDiagonal == 4){
+                        winFlg = true
+                    }
+                }else{
+                    flagDiagonal = 0 
+                }
+            }
+        }
+        let initialColumnRight = col;
+        let initialRowRight= row;
+        for(let i =0 ;i<8;i++){
+            if(initialColumnRight >0 && initialColumnRight <=7 && initialRowRight >0 && initialRowRight <=7){
+                initialColumnRight--;
+                initialRowRight--;
+            }
+        }
+        console.log()
+        for(let i=0;i<8;i++){
+            if(initialColumnRight <= 7 && initialRowRight <= 7){
+                let idToTest = `col-${initialColumnRight++}--row-${initialRowRight++}`;
                 let userAvailable = document.getElementById(idToTest).getAttribute("data-user" )  
                 if(userAvailable == player){
                     flagDiagonal++
@@ -150,7 +176,7 @@ const AddPlayer = () =>{
 
     return(
         <Wrapper>
-            <div style={{height:'75vh',width:'50vw',justifyContent:'center',alignItems:'center',margin:'auto',display:'flex'}}>
+            <div className='container'>
                 <div className='mainPageFrame alignCenter justifyContent' style={{flex:5,position:'relative',bottom:'0'}}>
                     <div style={{display:'grid',gridTemplateColumns:`repeat(8,1fr)`}} onClick={win === null ? selecLastEmptySlot: ()=> false}> 
                 <SlotDesign/>
@@ -171,10 +197,11 @@ const AddPlayer = () =>{
                     <Card img={Avatar1} backColor='byellow' borderColor='borderGreen' secondBorder={playerTurn === 0 ? true : false} disabled={true} text='Player 01' value={player1}/>
                     <Card img={Avatar2} backColor='bgreen' borderColor='borderyellow' secondBorder={playerTurn === 1 ? true : false} disabled={true}  text='Player 02' value={player2}/>
                     <div className='borderTop' style={{margin:'5px',width:'80%'}}/>
-                    {/* <Button width='80%' height='50px' backColor = '#4a47a3' txtColor='white' text='Undo Step' clicked={undoStep}/> */}
+                    <Button width='80%' height='50px' backColor = '#4a47a3' txtColor='white' text='Undo move' MouseEnter={() => setIsShown(true)} MouseLeave={() => setIsShown(false)}/>
                     <Button width='80%' height='50px' backColor = 'white' txtColor='red' text='End Tournament' clicked={endGame}/>
-
+                    
                 </div>
+                {popupshow && <ErrorMsgToast errMsg='Coming Soon'/>}
             </div>  
         </Wrapper>
     )

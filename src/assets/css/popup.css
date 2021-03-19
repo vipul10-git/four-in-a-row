@@ -1,0 +1,31 @@
+.popUp{
+    background:rgba(0,0,0,.4);
+    cursor:pointer;
+    height:100%;
+    position:fixed;
+    text-align:center;
+    top:0;
+    width:100%;
+    z-index:10000;
+}
+.popupselection{
+    border: 1px solid rgb(178, 178, 241);
+    background-color: rgb(199, 199, 245);
+    padding: 8px 16px;
+    border-radius: 10px;
+    margin: 10px;
+    color: #796f6f;
+}
+.hoverDiv{
+    height:fit-content;
+    width:35vh;
+    background-color:white;
+    border-radius:10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    z-index: 9999
+}

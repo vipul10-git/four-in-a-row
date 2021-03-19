@@ -174,7 +174,8 @@ cursor: pointer;
     width: 300px;
     height: 400px;
     z-index: 999;
-    top: -65px;
+    top: -75px;
+    right: -30px;
 }
 .innerCircle{
     background-color: white;
@@ -195,4 +196,10 @@ cursor: pointer;
     height: 40px;
     width: 40px;
     position: relative;
+}
+.container{
+    width:50vw;
+    justify-content:center;
+    margin:95px auto;
+    display:flex;
 }

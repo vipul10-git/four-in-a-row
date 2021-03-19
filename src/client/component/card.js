@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../../assets/css/app.css';
 
 const Card = (props) =>{
-    let {backColor ,borderColor, text , value, onChange, img, disabled, secondBorder} = props;
+    let {backColor ,borderColor, text , value, onChange, img, disabled, secondBorder, onClick} = props;
+    const [addhover, setstate] = useState(null)
     return(
-        <div className={`playerCard ${backColor}`}>
+        <div className={`playerCard ${addhover && 'boxShadow'} ${backColor}`} onClick={onClick} onMouseEnter={()=>setstate(true)} onMouseLeave={()=>setstate(false)}>
             <div className={secondBorder && 'bR50Per borderOrange'}><div className={`bR50Per p6 boxShadow ${borderColor}`}><img src={img} alt='player' className='playerImg'/></div></div>
             <div style={{flex:'5'}}>
                 <div className='secondaryFontColor font12 mL8 mB8 textInitial'>{text}</div>

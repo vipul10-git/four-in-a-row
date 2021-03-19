@@ -6,6 +6,8 @@ input{
     border: none;
     border-bottom:1px solid rgb(204, 190, 190) ;
     font-family: "Lucida Console", "Courier New", monospace;
+}
+input[type="text"]{
     width: 85%;
 }
 button{
