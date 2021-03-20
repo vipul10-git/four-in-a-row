@@ -12,7 +12,7 @@ export const RouteList = [
         component: PlayGame,
     },
     {
-        path: '/dashboard',
+        path: '/',
         component: Dashboard,
     },
 ]

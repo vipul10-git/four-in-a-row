@@ -27,7 +27,7 @@ const AddPlayer = () =>{
     let history = useHistory();
 
     const endGame = () =>{
-        history.push('/dashboard')
+        history.push('/')
     }
 
     const nextGame = (player) =>{
