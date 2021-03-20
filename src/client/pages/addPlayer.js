@@ -45,13 +45,13 @@ const AddPlayer = () =>{
     }
 
     return(
-        <Wrapper>
+        <Wrapper pageInfo='Add Players'>
             <div className='container'>
                 <div className='mainPageFrame alignCenter justifyContent'>
                     <Card img={Avatar1} backColor='byellow' borderColor='borderRed' text='Player 01' onChange={addName1} value={player1}/>
                     <Card img={Avatar2} backColor='bgreen' borderColor='borderyellow' text='Player 02' onChange={addName2} value={player2}/>
-                    <Card img={Run} backColor='bblue' borderColor='borderBlue' text='Number of games' onClick={()=>setShowGAmePopup(true)} value={playCount}/>
-                    <Card img={Winner} backColor='bblue' borderColor='borderBlue' text='Who Start ' onClick={()=>setShowPlayerPopup(true)} value={starterVal}/>
+                    <Card img={Run} backColor='bblue' borderColor='borderBlue' text='Number of games' disabled={true}  onClick={()=>setShowGAmePopup(true)} value={playCount}/>
+                    <Card img={Winner} backColor='bblue' borderColor='borderBlue' text='Who Start ' disabled={true}  onClick={()=>setShowPlayerPopup(true)} value={starterVal}/>
                     <div className='LineDesign'/>
                     <Button width='80%' height='50px' backColor = '#4a47a3' txtColor='white' text='Start Game' clicked={routeToGame}/>
                 </div>  
@@ -66,7 +66,6 @@ const AddPlayer = () =>{
                         <RadioBox value='10 Games' id='10Game'/>
                     </div>
                     <div className='LineDesign'/>
-                    <Button width='30%' height='50px' backColor = 'white' txtColor='#4a47a3' text='CANCEL' clicked={()=>setShowGAmePopup(false)}/>
                     <Button width='45%' height='50px' backColor = '#4a47a3' txtColor='white' text='OK ' clicked={()=>setShowGAmePopup(false)}/>
                 </Popup>
             }   

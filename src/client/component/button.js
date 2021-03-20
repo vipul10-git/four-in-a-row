@@ -5,8 +5,8 @@ const Button = (props) =>{
     return(
         <button onClick={clicked} onMouseLeave={MouseLeave} onMouseEnter={MouseEnter} className='button ' style={{backgroundColor : backColor, width:width, height:height}}>
             <div className='displayFlex justifyContent alignCenter'>
-                {sidImg && <div><img alt='' src = {sidImg} width='25'/></div>}
-                <div className='mL8' style={{color:txtColor}}>
+                {sidImg && <div><img alt={text} src = {sidImg} width='25'/></div>}
+                <div className={sidImg ? 'mL8':''} style={{color:txtColor}}>
                     {text}
                 </div>
             </div>

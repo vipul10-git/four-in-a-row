@@ -1,11 +1,16 @@
 body{
     letter-spacing: 0px;
+    margin: 0px !important;
 }
 input{
     outline: none;
     border: none;
     border-bottom:1px solid rgb(204, 190, 190) ;
     font-family: "Lucida Console", "Courier New", monospace;
+    cursor: pointer;
+}
+p{
+    margin: 0px!important;
 }
 input[type="text"]{
     width: 85%;

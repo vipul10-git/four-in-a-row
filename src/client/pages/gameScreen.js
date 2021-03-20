@@ -93,7 +93,7 @@ const AddPlayer = () =>{
     }
 
     return(
-        <Wrapper>
+        <Wrapper pageInfo='let the battle begin!'>
             <div className='container'>
                 <div className='mainPageFrame alignCenter justifyContent' style={{position:'relative',bottom:'0'}}>
                     <div style={{display:'grid',gridTemplateColumns:`repeat(8,1fr)`}} onClick={win === null ? selecLastEmptySlot: ()=> {}}> 

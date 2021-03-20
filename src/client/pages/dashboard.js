@@ -13,13 +13,15 @@ import Wrapper from '../component/wrapper';
 
 const Dashboard = () =>{
     const [popupshow,setIsShown] =  useState(false)
+    const [highlitePlay,setHighlitePlayBtn] = useState(false);
+
     let history = useHistory();
     const btnClickHandle=()=>{
         history.push('/add-Player')
     }
 
     return(
-        <Wrapper>
+        <Wrapper pageInfo='Start playing !'>
             <div className='container'>
                 <div>
                 <div className='floatL' style={{marginLeft: '30px'}}>
@@ -29,7 +31,7 @@ const Dashboard = () =>{
                 <img alt='game' src={GAMEIMG} className='mainimg floatR'/>
                 </div>
                 <div className='mainPageFrame'>
-                    <div className='playButton justifyContent alignCenter displayFlex'>
+                    <div className='playButton justifyContent alignCenter displayFlex' onMouseLeave={()=>setHighlitePlayBtn(false)} onMouseEnter={()=>setHighlitePlayBtn(true)}>
                         <img alt='play' src={Play} width='25px' className='bR50Per'/>
                         <div className='mT10 white'>PLAY</div>
                         </div>
@@ -37,7 +39,7 @@ const Dashboard = () =>{
                     <div className='btmMainPost'>
                         <div className='displayFlex justifyContent'>
                             <Button backColor = '#4BABFF' txtColor='white' text='Custome game' sidImg={One} MouseEnter={() => setIsShown(true)} MouseLeave={() => setIsShown(false)}/>
-                            <Button backColor = '#4B7BFF' txtColor='white' text='Two Players' sidImg={Two} clicked ={btnClickHandle} />
+                            <Button backColor = {!highlitePlay ? '#4BABFF' : 'rgb(255, 114, 67)'}txtColor='white' text='Two Players' sidImg={Two} clicked ={btnClickHandle} />
                         </div>
                         <div className='displayFlex justifyContent'>
                             <Button backColor = '#4B4BFF' txtColor='white' text='Game Online' sidImg={Online} MouseEnter={() => setIsShown(true)} MouseLeave={() => setIsShown(false)}/>

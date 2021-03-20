@@ -5,3 +5,14 @@
     display:flex;
     overflow:hidden;
 }
+.xyz{
+    height: 5vh;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    display: flex;
+}
+.backBtn{
+    width: 20px;
+    padding: 8px;
+}

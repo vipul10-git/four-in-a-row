@@ -72,6 +72,9 @@ cursor: pointer;
 .p6{
     padding: 6px;
 }
+.m8{
+    margin: 8px;
+}
 .mainPageFrame{
     background-color: white;
     border-radius: 30px;
@@ -131,6 +134,7 @@ cursor: pointer;
     align-items: center;
     padding: 6px;
     margin: 4px;
+    cursor: pointer;
 }
 .playerImg{
     width: 32px;
