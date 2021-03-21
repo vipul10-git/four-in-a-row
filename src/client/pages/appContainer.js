@@ -1,13 +1,12 @@
-import React,{Component} from "react";
+import React from "react";
 import Route from '../../route/route';
+const AppContainer =()=>{
 
-export default class AppContainer extends Component {
-  
-  render (){
     return(
       <div>
         <Route/>
       </div>
     )
-  }
 }
+
+export default AppContainer

@@ -76,10 +76,10 @@ const AddPlayer = () =>{
                 <Popup>
                     <h3> Number of game</h3>
                     <div onChange={setNumberOfGame}>
-                        <RadioBox value='2 Games' id='2Game'/>
-                        <RadioBox value='3 Games' id='3Game'/>
-                        <RadioBox value='5 Games' id='5Game'/>
-                        <RadioBox value='10 Games' id='10Game'/>
+                        <RadioBox value='2' id='2'/>
+                        <RadioBox value='3' id='3'/>
+                        <RadioBox value='5' id='5'/>
+                        <RadioBox value='10' id='10'/>
                     </div>
                     <div className='LineDesign'/>
                     <Button width='45%' height='50px' backColor = '#4a47a3' txtColor='white' text='OK ' clicked={()=>setShowGAmePopup(false)}/>

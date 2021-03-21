@@ -11,6 +11,8 @@ import ErrorMsgToast from '../component/errorToast';
 import {GameLogic} from '../utils/gameLogic';
 
 const AddPlayer = () =>{
+    let player1Wins = 0;
+    let player2Wins = 0;
     const params = useParams();
     const player1 = params.player1;
     const player2 = params.player2;
@@ -18,11 +20,8 @@ const AddPlayer = () =>{
     const [playerTurn, setPlayerTurn] = useState(start)
     const playCount = params.rounds;
     const [gameCount,setGameCount] = useState(1);
-    const [player1Wins,setPlayer1Wins] = useState(0);
-    const [player2Wins,setPlayer2Wins] = useState(0);
     const [showWin,setShowWin] = useState(false);
     const [popupshow, setIsShown] = useState(false)
-
     const [win , setWin] = useState(null);
     let history = useHistory();
 
@@ -36,21 +35,20 @@ const AddPlayer = () =>{
         
         resetBoard();
         if(player == 0){
-            let wins= player1Wins+1
-            setPlayer1Wins(wins)
+            player1Wins= player1Wins+1
         }else{
-            let wins= player2Wins+1
-            setPlayer2Wins(wins)
+            player2Wins= player2Wins+1
         }
-        if(playCount === gameCount){
-            setWin(player1Wins > player2Wins ? player1 : player2)
+        if(playCount == gameCount){
+            setTimeout(()=>{
+                setWin(player1Wins > player2Wins ? 1 : 0)
+            },500)
         }else{
             setShowWin(true)
             setTimeout(()=>setShowWin(false),1000) 
         }
     }
     const resetBoard = () =>{
-        
         setTimeout(()=>{
             setPlayerTurn(1)
             for(let i=0;i<8;i++){
@@ -106,7 +104,7 @@ const AddPlayer = () =>{
                     {win !== null ?
                             <div >
                                 <span className='Orange font18'>Congratulation!</span>
-                                <div>{ win ===1 ? player2 : player1},you won tournament</div>
+                                <div>{ win == 1 ? player1 : player2},you won tournament</div>
                             </div>
                         :
                         <h5>Playing Game {gameCount}</h5>
