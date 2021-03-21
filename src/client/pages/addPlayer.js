@@ -11,16 +11,18 @@ import Winner from '../../assets/images/winner.png';
 import Wrapper from '../component/wrapper';
 import Popup from '../component/popup';
 import RadioBox from '../component/radioBox';
+import ErrorMsgToast from '../component/errorToast';
+
 
 const AddPlayer = () =>{
-    const [player1, setPlayer1] = useState('David')
-    const [player2, setPlayer2] = useState('Maria')
+    const [player1, setPlayer1] = useState('')
+    const [player2, setPlayer2] = useState('')
     const [showGamePopup, setShowGAmePopup] = useState(false)
     const [showPlayerPopup, setShowPlayerPopup] = useState(false)
     const [starterVal,setStarterVal] = useState('Alternate')
     const [gameStart, setGameStart] = useState(3)
     const [playCount, setplayCount] = useState(5)
-
+    const [errorObj, setError] = useState({error:false,erroeText:''})
     let history = useHistory();
     const addName1 = (event) =>{
         setPlayer1(event.target.value);
@@ -31,7 +33,21 @@ const AddPlayer = () =>{
     }
 
     const routeToGame = () =>{
-        history.push('/start-Game/'+player1+'/'+player2+'/'+playCount+'/'+gameStart)
+        if(player1 == ''){
+            setError({error:true,erroeText:'Please Add Player1'})
+            setTimeout(()=>{
+                setError({error:false,erroeText:''})
+            },1000)
+        }
+        if(player2 == ''){
+            setError({error:true,erroeText:'Please Add Player2'})
+            setTimeout(()=>{
+                setError({error:false,erroeText:''})
+            },1000)
+        }
+        if(player2 != '' && player1 != ''){
+            history.push('/start-Game/'+player1+'/'+player2+'/'+playCount+'/'+gameStart)
+        }
     }
 
     const setNumberOfGame = (event) => {
@@ -43,7 +59,7 @@ const AddPlayer = () =>{
         setGameStart(e.target.id)
         setShowPlayerPopup(false)
     }
-
+    const {error , erroeText} = errorObj;
     return(
         <Wrapper pageInfo='Add Players'>
             <div className='container'>
@@ -79,6 +95,7 @@ const AddPlayer = () =>{
                     </div>
                 </Popup>
             } 
+            {error && <ErrorMsgToast errMsg={erroeText}/>}
         </Wrapper>
     )
 }
