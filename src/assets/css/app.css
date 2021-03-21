@@ -140,6 +140,11 @@ cursor: pointer;
     width: 32px;
     height: 32px;
 }
+.playerImgAvatar{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
 .borderGreen{
     border: 8px solid green;
 }

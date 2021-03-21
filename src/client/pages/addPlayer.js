@@ -59,13 +59,15 @@ const AddPlayer = () =>{
         setGameStart(e.target.id)
         setShowPlayerPopup(false)
     }
+
     const {error , erroeText} = errorObj;
+    
     return(
         <Wrapper pageInfo='Add Players'>
             <div className='container'>
                 <div className='mainPageFrame alignCenter justifyContent'>
-                    <Card img={Avatar1} backColor='byellow' borderColor='borderRed' text='Player 01' onChange={addName1} value={player1}/>
-                    <Card img={Avatar2} backColor='bgreen' borderColor='borderyellow' text='Player 02' onChange={addName2} value={player2}/>
+                    <Card img={Avatar1} imgid='first' backColor='byellow' borderColor='borderRed' text='Player 01' onChange={addName1} value={player1}/>
+                    <Card img={Avatar2} imgid='second' backColor='bgreen' borderColor='borderyellow' text='Player 02' onChange={addName2} value={player2}/>
                     <Card img={Run} backColor='bblue' borderColor='borderBlue' text='Number of games' disabled={true}  onClick={()=>setShowGAmePopup(true)} value={playCount}/>
                     <Card img={Winner} backColor='bblue' borderColor='borderBlue' text='Who Start ' disabled={true}  onClick={()=>setShowPlayerPopup(true)} value={starterVal}/>
                     <div className='LineDesign'/>

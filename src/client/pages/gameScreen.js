@@ -24,6 +24,8 @@ const AddPlayer = () =>{
     const [popupshow, setIsShown] = useState(false)
     const [win , setWin] = useState(null);
     let history = useHistory();
+    let player1Image = localStorage.getItem('Player 01') || Avatar1
+    let player2Image = localStorage.getItem('Player 02') || Avatar2
 
     const endGame = () =>{
         history.push('/')
@@ -68,7 +70,7 @@ const AddPlayer = () =>{
             let id = `col-${i}--row-${row}`;
             if(document.getElementById(id).innerHTML ===''){
                 if(playerTurn === 0){
-                    document.getElementById(id).innerHTML = `<img src=${Avatar1} alt='player' height='30px'  className='playerImg'/>`;
+                    document.getElementById(id).innerHTML = `<img src=${player1Image}  alt='player'  class='playerImgAvatar'/>`;
                     document.getElementById(id).setAttribute("data-user",playerTurn )  
                     if(GameLogic(i,+row,playerTurn)){
                         nextGame(playerTurn)
@@ -77,7 +79,7 @@ const AddPlayer = () =>{
                     }
                     return;
                 }else if(playerTurn === 1){
-                    document.getElementById(id).innerHTML = `<img src=${Avatar2} alt='player' height='30px' className='playerImg'/>`;
+                    document.getElementById(id).innerHTML = `<img src=${player2Image}  alt='player'  style={border-radius:50%} class='playerImgAvatar'/>`;
                     document.getElementById(id).setAttribute("data-user",playerTurn )  
                     if(GameLogic(i,+row,playerTurn)){
                         nextGame(playerTurn)
@@ -109,8 +111,8 @@ const AddPlayer = () =>{
                         :
                         <h5>Playing Game {gameCount}</h5>
                     }
-                    <Card img={Avatar1} underLineBorder = {true}  backColor='byellow' borderColor='borderGreen' secondBorder={playerTurn === 0 ? true : false} disabled={true} text='Player 01' value={player1}/>
-                    <Card img={Avatar2} underLineBorder = {true} backColor='bgreen' borderColor='borderyellow' secondBorder={playerTurn === 1 ? true : false} disabled={true}  text='Player 02' value={player2}/>
+                    <Card img={player1Image} underLineBorder = {true} imgid='first'  backColor='byellow' borderColor='borderGreen' secondBorder={playerTurn === 0 ? true : false} disabled={true} text='Player 01' value={player1}/>
+                    <Card img={player2Image} underLineBorder = {true} imgid='second' backColor='bgreen' borderColor='borderyellow' secondBorder={playerTurn === 1 ? true : false} disabled={true}  text='Player 02' value={player2}/>
                     <div className='LineDesign'/>
                     <Button width='80%' height='50px' backColor = '#4a47a3' txtColor='white' text='Undo move' MouseEnter={() => setIsShown(true)} MouseLeave={() => setIsShown(false)}/>
                     <Button width='80%' height='50px' backColor = 'white' txtColor='red' text='End Tournament' clicked={endGame}/>

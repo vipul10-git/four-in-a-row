@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { useHistory } from "react-router-dom";
 import '../../assets/css/app.css';
 import GAMEIMG from '../../assets/images/4inarow.png';
@@ -19,6 +19,10 @@ const Dashboard = () =>{
     const btnClickHandle=()=>{
         history.push('/add-Player')
     }
+
+    useEffect(()=>{
+        localStorage.clear();
+    },)
 
     return(
         <Wrapper pageInfo='Start playing !'>
