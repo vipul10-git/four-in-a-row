@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/four-in-a-row/static/css/main.282cd8ea.chunk.css",
-    "main.js": "/four-in-a-row/static/js/main.9edcd556.chunk.js",
-    "main.js.map": "/four-in-a-row/static/js/main.9edcd556.chunk.js.map",
+    "main.css": "/four-in-a-row/static/css/main.f9c78676.chunk.css",
+    "main.js": "/four-in-a-row/static/js/main.45d2a823.chunk.js",
+    "main.js.map": "/four-in-a-row/static/js/main.45d2a823.chunk.js.map",
     "runtime-main.js": "/four-in-a-row/static/js/runtime-main.c6aad415.js",
     "runtime-main.js.map": "/four-in-a-row/static/js/runtime-main.c6aad415.js.map",
     "static/js/2.4d213be8.chunk.js": "/four-in-a-row/static/js/2.4d213be8.chunk.js",
     "static/js/2.4d213be8.chunk.js.map": "/four-in-a-row/static/js/2.4d213be8.chunk.js.map",
     "index.html": "/four-in-a-row/index.html",
-    "static/css/main.282cd8ea.chunk.css.map": "/four-in-a-row/static/css/main.282cd8ea.chunk.css.map",
+    "static/css/main.f9c78676.chunk.css.map": "/four-in-a-row/static/css/main.f9c78676.chunk.css.map",
     "static/js/2.4d213be8.chunk.js.LICENSE.txt": "/four-in-a-row/static/js/2.4d213be8.chunk.js.LICENSE.txt",
     "static/media/4inarow.4e174a21.png": "/four-in-a-row/static/media/4inarow.4e174a21.png",
     "static/media/backBtn.21685fff.png": "/four-in-a-row/static/media/backBtn.21685fff.png",
@@ -17,7 +17,7 @@
   "entrypoints": [
     "static/js/runtime-main.c6aad415.js",
     "static/js/2.4d213be8.chunk.js",
-    "static/css/main.282cd8ea.chunk.css",
-    "static/js/main.9edcd556.chunk.js"
+    "static/css/main.f9c78676.chunk.css",
+    "static/js/main.45d2a823.chunk.js"
   ]
 }
