@@ -1,6 +1,7 @@
 .wrapper{
     background-color:#CED2DC;
     height:100vh;
+    overflow: hidden;
 }
 .xyz{
     height: 5vh;
