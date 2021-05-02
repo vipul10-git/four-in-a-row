@@ -1,8 +1,8 @@
 .button{
-border-radius: 20px;
+border-radius: 10px;
 border: none;
 padding: 10px 20px;
-width: 170px;
+width: 100%;
 margin: 5px;
 outline: none;
 cursor: pointer;
@@ -20,16 +20,17 @@ cursor: pointer;
     color:rgb(228, 167, 111)
 }
 .byellow{
-    background-color: rgb(225, 243, 160);
+    background-color: #DCF6E4;
 }
 .bgreen{
-    background-color: rgb(172, 230, 172);
+    background-color: #F6EFD5;
 }
 .bblue{
-    background-color: rgb(172, 204, 230);
+    background-color: #EFF3FF;
 }
 .font12{
     font-size: 12px;
+    line-height: 1.5;
 }
 .font18{
     font-size: 18px;
@@ -39,17 +40,21 @@ cursor: pointer;
 }
 .LineDesign{
     border-top: .2px solid #dcdcdc;
-    margin-top: 5px;
-    width: 100%;
+    width: 90%;
+    position: relative;
+    top: -2rem;
+    margin: 0px 2rem;
 }
-.floatL{
-    float: left;
-}
-.floatR{
-    float: right;
+.LineDesign2{
+    border-top: .2px solid #dcdcdc;
+    width: 90%;
+    position: relative;
+    margin: 1rem;
 }
 .displayFlex{
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .mT10{
     margin-top: 10px;
@@ -57,111 +62,107 @@ cursor: pointer;
 .mL8{
     margin-left: 8px;
 }
-.mL4{
-    margin-left: 4px;
-}
-.mB8{
-    margin-bottom: 8px;
-}
-.mBR4{
-    margin-right: 4px;
-}
-.pL8{
-    padding-left: 8px;
-}
 .p6{
     padding: 6px;
-}
-.m8{
-    margin: 8px;
 }
 .mainPageFrame{
     background-color: white;
     border-radius: 30px;
-    height: 60vh;
-    width: 30vw;
-    position: absolute;
-    bottom: 60px;
-    padding: 20px;
+    height: 20.5rem;
+    width: 28rem;
+    z-index: 2;
+}
+.addPlayerPageFrame{
+    background-color: white;
+    border-radius: 30px;
+    width: 28rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+}
+.gameScreenFrame{
+    background-color: white;
+    border-radius: 30px;
+    padding: 2rem;
     z-index: 2;
 }
 .bottomSheet{
-    width: 30vw;
-    position: absolute;
+    width: 28rem;
+    position: relative;
     background-color: #EEEEEE;
     border-radius: 30px;
-    height: 15vh;
-    bottom: 20px;
+    height: 14vh;
+    bottom: 4rem;
     z-index: 1;
-    padding: 20px;
-}
-.sideSheet{
-    width: 18vw;
-    background-color: #EEEEEE;
-    border-radius: 0px 30px 30px 0px;
-    height: 60vh;
-    z-index: 1;
-    position: relative;
-    padding: 20px 0px 20px 20px;
-    left: -26px;
-    flex-direction: column;
-}
-.playButton{
-    height: 80px;
-    width: 80px;
-    border-radius: 10px;
-    background-color: rgb(255, 114, 67);
-    flex-direction: column;
-    margin: 55px;
-}
-.btmMainPost{
-    position: relative;
-    bottom: -60px;
 }
 .text2020{
     position: absolute;
-    bottom: 0px;
-    left: 17px;
-    font-size: 10px;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 1rem;
     color: #424242;
 }
+.sideSheet{
+    width: 24vw;
+    background-color: #EEEEEE;
+    border-radius: 0px 30px 30px 0px;
+    z-index: 1;
+    position: relative;
+    padding: 0px 0px 0px 3rem;
+    left: -2rem;
+    flex-direction: column;
+}
+.playButton{
+    height: 5rem;
+    width: 5rem;
+    margin: 3.75rem 0 0 3.75rem;
+    border-radius: 0.8rem;
+    background-color: #FF7243;
+    flex-direction: column;
+    box-shadow: 0 0 1rem 0 #FF7243;
+}
+.card-shadow{
+    box-shadow: 0 0 1rem -0.5rem black
+}
+
 .playerCard{
     border-radius: 10px;
     width: 75%;
     display: flex;
     align-items: center;
     padding: 6px;
-    margin: 4px;
+    margin: 0.5rem;
     cursor: pointer;
 }
 .playerImg{
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
 }
 .playerImgAvatar{
-    width: 25px;
-    height: 25px;
+    width: 1.5rem;
+    height: 1.5rem;
     border-radius: 50%;
 }
 .borderGreen{
-    border: 8px solid green;
+    border: 8px solid #F8D146;
 }
 .borderRed{
-    border: 8px solid rgb(243, 119, 119);
+    border: 8px solid #37AC5D;
 }
 .borderyellow{
     border: 8px solid yellow;
-
 }
 .borderBlue{
-    border: 8px solid rgb(166, 166, 253);
+    border: 8px solid #B1C4F9;
 }
 .borderOrange{
-    border: 4px solid rgb(247, 166, 134);
+    border: 4px solid #FFA200;
 }
-.boxShadow{
+.borderTransparent{
+    border: 4px solid transparent;
+}
+.avatarShadow{
     box-shadow: 0px 2px 7px -3px black, 0 0px 2px black inset;
 }
 .bNone{
@@ -170,49 +171,177 @@ cursor: pointer;
 .bR50Per{
     border-radius: 50%;
 }
-.alignCenter{
-    align-items: center;
-}
-.justifyContent{
-    justify-content: center;
-}
-.textCenter{
-    text-align: center;
-}
-.textInitial{
-    text-align: initial;
-}
 .mainimg{
-    position: relative;
-    width: 300px;
-    height: 400px;
+    width: 280px;
+    height: 320px;
     z-index: 999;
-    top: -75px;
-    right: -30px;
+    position: relative;
+    right: -3rem
 }
 .innerCircle{
     background-color: white;
-    height: 25px;
-    width: 25px;
-    position: absolute;
-    padding: 5px;
+    height: 2.7rem;
+    width: 2.7rem;
     border-radius: 50%;
     margin: auto;
-    bottom: 0;
-    top: 0;
-    right: 0;
-    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 .outerCircle{
     background-color: #0095ff;
-    height: 40px;
-    width: 40px;
-    position: relative;
+    height: 3rem;
+    width: 3rem;
 }
 .container{
-    width:50vw;
     justify-content:center;
-    margin:95px auto;
     display:flex;
+    height: 100vh;
+    align-items: center;
+    flex-direction: column;
+}
+.title-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.game-Detail-section-900,
+.game-btn-section-900{
+    display:none
+}
+
+.game-Detail-section-450{
+    display: block;
+}
+.game-section{
+    display: flex;
+    flex-direction: row;
+}
+.Game-img-section{
+    display: flex;
+    position: relative;
+    left: 1rem;
+}
+.section2{
+    position: relative;
+    top: -9rem;
+}
+.main-btn-section{
+    padding: 1rem
+}
+.playBtn{
+    width: 1.5rem;
+}
+
+@media (max-width:500px){
+    .mainPageFrame{
+        height: 40vh;
+        width: 80vw;
+    }
+    .addPlayerPageFrame{
+        width: 80vw;
+    }
+    .playBtn{
+        width: 1rem;
+    }
+    .p6{
+        padding: 3px;
+    }
+    .font12{
+        line-height: 1;
+    }
+    .content-frame{
+        top: -8rem;
+    }
+    .mainimg{
+        width: 14rem;
+        height: 16rem;
+        right: 1rem;
+    }
+    .LineDesign{
+        top: 0rem;
+        width: auto;
+    }
+    button{
+        padding:5px 8px!important
+    }
+    .bottomSheet{
+        width: 80vw;
+        bottom: 3rem;
+    }
+    .playButton{
+        height: 3rem;
+        width: 3rem;
+        margin: 2.75rem 0 0 1.75rem;
+
+    }
+    .borderGreen{
+        border: 3px solid #F8D146;
+    }
+    .borderRed{
+        border: 3px solid #37AC5D;
+    }
+    .borderyellow{
+        border: 3px solid yellow;
+    }
+    .borderOrange{
+        border: 2px solid #FFA200;
+    }
+    .borderTransparent{
+        border: 2px solid transparent;
+    }
+    .innerCircle{
+        height: 1.7rem;
+        width: 1.7rem;
+    }
+    .outerCircle{
+        height: 2rem;
+        width: 2rem;
+    }
+    .container{
+        padding-top: 3rem;
+    }
+}
+
+@media (max-width:1000px){
+    .sideSheet{
+        border-radius: 0 0 30px 30px;
+        height: 8.5rem;
+        padding: 0;
+        left: 0;
+    }
+    .gameBottomButton{
+        flex-direction: row;
+    }
+    .game-Detail-section-900{
+        display:block;
+        background: #EEEEEE;
+        width: 100%;
+        border-radius: 30px 30px 0px 0px;
+        text-align: center;
+    }
+    .game-btn-section-900{
+        display: flex;
+    }
+    .game-Detail-section-450{
+        display: none;
+    }
+    .game-section{
+        flex-direction: column;
+    }
+    .userSection{
+        display: flex;
+    }
+    .playerImg{
+        height: 1rem;
+        width: 1rem;
+    }
+    .gameScreenFrame{
+        background-color: white;
+        border-radius: 0;
+        padding: 2rem;
+        z-index: 2;
+        width: min-content;
+    }
 }
