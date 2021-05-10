@@ -144,6 +144,20 @@ cursor: pointer;
     height: 1.5rem;
     border-radius: 50%;
 }
+.playerImgAvatarHover{
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    position:absolute;
+    z-index: 1;
+}
+.slotImgAad{
+    position:absolute;
+    z-index: 999999;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
 .borderGreen{
     border: 8px solid #F8D146;
 }
@@ -178,7 +192,7 @@ cursor: pointer;
     position: relative;
     right: -3rem
 }
-.innerCircle{
+.innerCircle,.innerCircleAcc{
     background-color: white;
     height: 2.7rem;
     width: 2.7rem;
@@ -291,7 +305,7 @@ cursor: pointer;
     .borderTransparent{
         border: 2px solid transparent;
     }
-    .innerCircle{
+    .innerCircle,.innerCircle{
         height: 1.7rem;
         width: 1.7rem;
     }
@@ -344,4 +358,10 @@ cursor: pointer;
         z-index: 2;
         width: min-content;
     }
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
 }
