@@ -10,7 +10,7 @@ import SlotDesign from '../component/slotDesign';
 import ErrorMsgToast from '../component/errorToast';
 import { GameLogic } from '../utils/gameLogic';
 
-const AddPlayer = () => {
+const GameScreen = () => {
     let player1Wins = 0;
     let player2Wins = 0;
     const params = useParams();
@@ -203,4 +203,4 @@ const AddPlayer = () => {
     )
 }
 
-export default AddPlayer;
+export default GameScreen;
