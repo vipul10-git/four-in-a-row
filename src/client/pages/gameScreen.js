@@ -57,7 +57,7 @@ const AddPlayer = () => {
                 for (let j = 0; j < 8; j++) {
                     let id = `col-${i}--row-${j}`
                     document.getElementById(id).setAttribute("data-user", null)
-                    document.getElementById(id).innerHTML = ''
+                    document.getElementById(id).querySelector('div').innerHTML = ''
                 }
             }
         }, 1000)
@@ -65,32 +65,84 @@ const AddPlayer = () => {
     }
 
     const selecLastEmptySlot = (even) => {
+        even.preventDefault()
         let row = even.target.dataset.row;
         for (let i = 7; i >= even.target.dataset.col; i--) {
             let id = `col-${i}--row-${row}`;
-            if (document.getElementById(id).innerHTML === '') {
-                if (playerTurn === 0) {
-                    document.getElementById(id).innerHTML = `<img src=${player1Image}  alt='player'  class='playerImgAvatar borderRed'/>`;
-                    document.getElementById(id).setAttribute("data-user", playerTurn)
-                    if (GameLogic(i, +row, playerTurn)) {
-                        nextGame(playerTurn)
-                    } else {
-                        setPlayerTurn(1);
+            if (document.getElementById(id)) {
+                let parent = document.getElementById(id)
+                let children = parent.querySelector('div')
+                if (children.innerHTML === '') {
+                    if (playerTurn === 0) {
+                        children.innerHTML = `<img src=${player1Image}  alt='player'  class='playerImgAvatar borderRed'/>`;
+                        document.getElementById(id).setAttribute("data-user", playerTurn)
+                        if (GameLogic(i, +row, playerTurn)) {
+                            nextGame(playerTurn)
+                        } else {
+                            var sound = document.getElementById("audio");
+                            sound.play();
+                            setPlayerTurn(1);
+                        }
+                        return;
+                    } else if (playerTurn === 1) {
+                        children.innerHTML = `<img src=${player2Image}  alt='player' class='playerImgAvatar borderGreen'/>`;
+                        document.getElementById(id).setAttribute("data-user", playerTurn)
+                        if (GameLogic(i, +row, playerTurn)) {
+                            nextGame(playerTurn)
+                        } else {
+                            var sound = document.getElementById("audio");
+                            sound.play();
+                            setPlayerTurn(0);
+                        }
+                        return;
                     }
-                    return;
-                } else if (playerTurn === 1) {
-                    document.getElementById(id).innerHTML = `<img src=${player2Image}  alt='player' class='playerImgAvatar borderGreen'/>`;
-                    document.getElementById(id).setAttribute("data-user", playerTurn)
-                    if (GameLogic(i, +row, playerTurn)) {
-                        nextGame(playerTurn)
-                    } else {
-                        setPlayerTurn(0);
-                    }
-                    return;
+
                 }
             }
         }
+        for (let i = even.target.dataset.col; i <= 7; i++) {
+            let id = `col-${i}--row-${even.target.dataset.row}`;
+            let parent = document.getElementById(id)
+            if (parent.childElementCount > 1) {
+                parent.removeChild(parent.childNodes[1])
+            }
+        }
+
     }
+    const onHover = (e) => {
+        for (let i = e.target.dataset.col; i <= 7; i++) {
+            let id = `col-${i}--row-${e.target.dataset.row}`;
+            if (playerTurn === 0 && document.getElementById(id).childElementCount == 1) {
+                let parent = document.getElementById(id)
+                parent.innerHTML += `<img src=${player1Image} alt='player' style='opacity:0.${i}' class='playerImgAvatarHover borderRed'/>`
+            } else if (playerTurn === 1 && document.getElementById(id).childElementCount == 1) {
+                let parent = document.getElementById(id)
+                parent.innerHTML += `<img src=${player2Image} alt='player' style='opacity:0.${i}' class='playerImgAvatarHover borderGreen'/>`
+            }
+        }
+    }
+    const onMouseLeave = (e) => {
+        for (let i = e.target.dataset.col; i <= 7; i++) {
+            let id = `col-${i}--row-${e.target.dataset.row}`;
+            let parent = document.getElementById(id)
+            if (parent.childElementCount > 1) {
+                parent.removeChild(parent.childNodes[1])
+            }
+        }
+    }
+
+    const handleDragStart = e => {
+        e.dataTransfer.setData("dropedTaskData", e.target.dataset.taskdata)
+    };
+
+    const handleDrop = (e) => {
+        e.preventDefault();
+        selecLastEmptySlot(e)
+    }
+    const handleDropAllowed = (e) => {
+        e.preventDefault();
+    }
+
 
     return (
         <Wrapper pageInfo='let the battle begin!'>
@@ -106,15 +158,15 @@ const AddPlayer = () => {
                             :
                             <h5>Playing Game {gameCount}</h5>
                         }
-                        
+
                     </div>
                     <div className='gameScreenFrame card-shadow'>
                         <div className='userSection game-Detail-section-900'>
-                            <Card img={player1Image} underLineBorder={true} imgid='first' backColor='byellow' borderColor='borderRed' secondBorder={playerTurn === 0 ? true : false} disabled={true} text='Player 01' value={player1} />
-                            <Card img={player2Image} underLineBorder={true} imgid='second' backColor='bgreen' borderColor='borderGreen' secondBorder={playerTurn === 1 ? true : false} disabled={true} text='Player 02' value={player2} />
+                            <Card img={player1Image} draggable={playerTurn == 0 ? true : false} handleDragStart={handleDragStart} underLineBorder={true} imgid='first' backColor='byellow' borderColor='borderRed' secondBorder={playerTurn === 0 ? true : false} disabled={true} text='Player 01' value={player1} />
+                            <Card img={player2Image} draggable={playerTurn == 1 ? true : false} handleDragStart={handleDragStart} underLineBorder={true} imgid='second' backColor='bgreen' borderColor='borderGreen' secondBorder={playerTurn === 1 ? true : false} disabled={true} text='Player 02' value={player2} />
                         </div>
-                        <div style={{ display: 'grid', gridTemplateColumns: `repeat(8,1fr)` }} onClick={win === null ? selecLastEmptySlot : () => { }}>
-                            <SlotDesign />
+                        <div style={{ display: 'grid', gridTemplateColumns: `repeat(8,1fr)` }} onDropCapture={handleDrop} onDragOverCapture={(e) => handleDropAllowed(e)} onClick={win === null ? selecLastEmptySlot : () => { }}>
+                            <SlotDesign onMouseOver={onHover} onMouseLeave={onMouseLeave} />
                         </div>
                     </div>
                     <div className='sideSheet game-Detail-section-450'>
@@ -145,6 +197,8 @@ const AddPlayer = () => {
                     {popupshow && <ErrorMsgToast errMsg='Coming Soon' />}
                 </div>
             </div>
+            <audio id="audio" src="http://www.soundjay.com/button/beep-07.wav" autoPlay={false} ></audio>
+
         </Wrapper>
     )
 }

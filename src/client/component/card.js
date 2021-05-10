@@ -3,7 +3,7 @@ import '../../assets/css/app.css';
 
 const Card = (props) =>{
     const inputFile = useRef(null) 
-    let {backColor ,borderColor, text , value, onChange, img, imgid, disabled, secondBorder, onClick, underLineBorder} = props;
+    let {backColor ,borderColor, text , value, onChange, img, imgid, disabled,draggable,handleDragStart, secondBorder, onClick, underLineBorder} = props;
     const [addhover, setstate] = useState(null)
     const opneImageBox = () =>{
         inputFile.current.click();
@@ -17,7 +17,7 @@ const Card = (props) =>{
 
     return(
         <div className={`playerCard ${addhover ? 'avatarShadow':undefined} ${backColor}`} onClick={onClick} onMouseEnter={()=>setstate(true)} onMouseLeave={()=>setstate(false)}>
-            <div className={secondBorder ? 'bR50Per borderOrange':'bR50Per borderTransparent'}>
+            <div className={secondBorder ? 'bR50Per borderOrange':'bR50Per borderTransparent'} draggable={draggable} onDragStart={handleDragStart}>
                 <div className={`bR50Per p6 avatarShadow ${borderColor}`}>
                     {imgid && <input type="file"  accept="image/*" name="image" ref={inputFile} id="file" onChange={loadFile} style={{display: 'none'}}/> }
                     <img src={img} onClick={imgid ? opneImageBox : ()=> {}} id={imgid ? imgid : text }  alt='player' className={`playerImg ${imgid && 'bR50Per'}`}/>
